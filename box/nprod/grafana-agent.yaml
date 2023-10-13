@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana-agent
+  namespace: flux-system
+spec:
+  interval: 1m
+  releaseName: grafana-agent
+  targetNamespace: observability-system
+  chart:
+    spec:
+      chart: box/nprod/grafana-agent
+      sourceRef:
+        kind: GitRepository
+        name: fluxcd-infra
